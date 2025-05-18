@@ -1,0 +1,48 @@
+
+
+data = [
+    ["Business Name", "Industry", "Contact Person", "Phone", "Email", "Website", "Address", "Business Hours", "Ratings"],
+    ["National Home Improvement Inc.", "Kitchen Planning & Remodeling", "Not specified", "(210) 960-5142", "Not specified",
+     "https://www.nationalhomeimprovementtexas.com/", "Serving the San Antonio area.", "Not specified", "Not specified"],
+    ["H&I Construction & Remodeling Inc.", "Kitchen Planning & Remodeling", "Charles K. Hankins (Owner)", "(844) 861-7564",
+     "Not specified", "https://www.handiconstruction.com/", "26962 Blanco Rd, San Antonio, TX 78260",
+     "Mon–Fri: 8:00 am–6:00 pm; Sat–Sun: Closed", "A+ (BBB)"],
+    ["Accu-Rite Roofing and Construction Services", "Kitchen Planning & Remodeling", "Not specified", "(210) 245-8804",
+     "Not specified", "https://www.accuriteroof.com/", "4709 Roosevelt Avenue, San Antonio, TX 78214",
+     "Mon–Fri: 7:00 am–5:00 pm; Sat–Sun: Closed", "Not specified"],
+    ["Oncken & Sons Cabinet Shop Inc", "Custom Cabinets & Woodworking", "Not specified", "(210) 512-9277", "Not specified",
+     "https://onckenandsons.com/", "203 Seale Road, San Antonio, TX 78219", "Mon–Fri: 7:00 am–4:30 pm; Sat–Sun: Closed",
+     "Not specified"],
+    ["A Star Bath And Kitchen Inc", "Kitchen Planning & Remodeling", "Not specified", "(210) 592-8142", "Not specified",
+     "Not specified", "7350 Sky Blue Bnd, San Antonio, TX 78252", "Not specified", "Not specified"],
+    ["22ND Century Creations LLC", "Kitchen Planning & Remodeling", "Not specified", "(210) 984-2281", "Not specified",
+     "Not specified", "7246 Azalea Square, San Antonio, TX 78218", "Not specified", "Not specified"],
+    ["Kitchen Solvers of San Antonio", "Kitchen Planning & Remodeling", "Not specified", "(210) 775-5004", "Not specified",
+     "Not specified", "14501 Blanco Rd Ste 730, San Antonio, TX 78216", "Not specified", "Not specified"],
+    ["McGovern Woodcraft", "Custom Cabinets & Woodworking", "Tim & Chelsea McGovern (Owners)", "(361) 537-3572",
+     "Not specified", "https://www.mcgovernwoodcraft.com/", "6735 Walzem Rd Ste 3, San Antonio, TX 78239",
+     "Mon–Fri: 8:00 am–5:00 pm; Sat–Sun: Closed", "Not specified"],
+    ["New Generation Kitchen & Bath", "Kitchen Planning & Remodeling", "Annie & Allen (Staff Members)", "(210) 202-0988",
+     "Not specified", "Not specified", "6739 NW Loop 410 #109, San Antonio, TX 78238",
+     "Mon–Fri: 9:00 am–8:00 pm; Sat: 9:00 am–1:00 pm; Sun: Closed", "4.6/5 (TrustAnalytica)"],
+    ["San Antonio Kitchen and Bath LLC", "Kitchen Planning & Remodeling", "Hector Castillo (Owner)", "(210) 438-4186",
+     "Not specified", "Not specified", "613 E Ashby Pl #1, San Antonio, TX 78212",
+     "Mon–Fri: 9:00 am–8:00 pm; Sat: 9:00 am–1:00 pm; Sun: Closed", "5.0/5 (Angi)"]
+]
+
+pdf = FPDF(orientation='L', unit='mm', format='A4')
+pdf.add_page()
+pdf.set_font("Arial", size=8)
+col_widths = [45, 40, 35, 25, 30, 45, 50, 60, 25]
+
+pdf.set_fill_color(200, 220, 255)
+for i, header in enumerate(data[0]):
+    pdf.cell(col_widths[i], 10, header, border=1, ln=0, align='C', fill=True)
+pdf.ln()
+
+for row in data[1:]:
+    for i, item in enumerate(row):
+        pdf.cell(col_widths[i], 10, str(item)[:45], border=1)
+    pdf.ln()
+
+pdf.output("Kitchen_Remodeling_San_Antonio_Leads.pdf")
